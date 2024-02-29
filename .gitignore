@@ -31,3 +31,5 @@
 *.out
 *.app
 /.vs/LestaProgrammerTestTask
+/LestaProgrammerTestTask/x64/Debug
+/x64/Debug
