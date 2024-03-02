@@ -1,5 +1,6 @@
 #include "Task1/Task1.h"
 #include "Task2/Task2.h"
+#include "Task3/Task3.h"
 
 #include <iostream>
 #include <cmath>
@@ -227,6 +228,40 @@ bool testTask2CPP()
 	return true;
 }
 
+void printArray(int array[], size_t size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << array[i] << " ";
+	}
+}
+
+bool testTask3()
+{
+	int arrayToSort[] = { 2, 5, 1, 4, -10, 0 };
+	int arrayToTest[] = { -10, 0, 1, 2, 4, 5 };
+	
+	std::cout << "	Array to sort: ";
+	printArray(arrayToSort, 6);
+	std::cout << "\n	Array to test: ";
+	printArray(arrayToTest, 6);
+
+	mergeSort(arrayToSort, 6);
+	std::cout << "\n	Array after sort: ";
+	printArray(arrayToSort, 6);
+
+	for (int i = 0; i < 6; i++)
+	{
+		if (arrayToSort[i] != arrayToTest[i])
+		{
+			std::cout << "\n	Test Failed!";
+			return false;
+		}
+	}
+	std::cout << "\n	-> Test Succeed";
+	return true;
+}
+
 int main() {
 	std::cout << "Test of Task 1\n\n";
 	if (!testTask1())
@@ -244,6 +279,12 @@ int main() {
 	if (!testTask2CPP())
 	{
 		std::cout << "Test of Task 2(CPP implementation) Failed, reject CV";
+		return -1;
+	}
+	std::cout << "\nTesk of Task 3\n\n";
+	if (!testTask3())
+	{
+		std::cout << "Test of Task 3 Failed, reject CV";
 		return -1;
 	}
 	return 0;
